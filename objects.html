@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main">
+        <table cellpadding="10px" border="1px">
+            <thead>
+                <tr>
+                    <th>S/N</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+
+
+            <tbody id="data">
+            </tbody>
+        </table>
+        <div class="button">
+            <input id="input" type="button" value="Add">
+
+        </div>
+    </div>
+
+    <script>
+        facebook = {
+            "SN": 1,
+            "name": "Faceboook",
+            "email": "facebook@gmail.com",
+            "phoneNumber": "+75777577743",
+            "location": "California"
+        }
+
+        samsung = {
+            "SN": 2,
+            "name": "Samsung",
+            "email": "samsung@gmail.com",
+            "phoneNumber": "+00948858943",
+            "location": "Japan"
+        }
+
+        google = {
+            "SN": 3,
+            "name": "Google",
+            "email": "google@gmail.com",
+            "phoneNumber": "+859454995854",
+            "location": "America"
+        }
+
+        huawei = {
+            "SN": 4,
+            "name": "Huawei",
+            "email": "huawei@gmail.com",
+            "phoneNumber": "+989485748574",
+            "location": "China"
+        }
+
+
+        
+        companies = [facebook, samsung, google, huawei]
+
+        cont = ``
+
+        for (i = 0; i < companies.length; i++) {
+            cont += `
+                <tr>
+                    <td>${i + 1}</td>
+                    <td>${companies[i].name}</td>
+                    <td>${companies[i].email}</td>
+                    <td>${companies[i].phoneNumber}</td>
+                    <td>${companies[i].location}</td>
+                </tr>`
+        }
+        document.getElementById('data').innerHTML = cont;
+
+        const add = () => {
+            newInput = {
+                "SN": companies.length + 1,
+                "name": prompt("Enter Company Name:"),
+                "email": prompt("Enter Email:"),
+                "phoneNumber": prompt("Enter Phone Number:"),
+                "location": prompt("Enter Location:")
+            }
+            companies.push(newInput)
+            append()
+        }
+
+        const append = () => {
+
+            for (i = companies.length - 1; i < companies.length; i++) {
+                cont += `
+                 <tr>
+                    <td>${i + 1}</td>
+                    <td>${companies[i].name}</td>
+                    <td>${companies[i].email}</td>
+                    <td>${companies[i].phoneNumber}</td>
+                    <td>${companies[i].location}</td>
+                </tr>`
+
+            }
+            document.getElementById('data').innerHTML = cont;
+        }
+        document.getElementById('input').addEventListener('click', add)
+
+       </script>
+</body>
+
+</html>
