@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Functions</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <div class="main">
+      <button id="btn">Calculate</button>
+    </div>
+    <!-- Javascript -->
+    <script>
+      var button = document.getElementById("btn");
+      button.addEventListener("click", function () {
+        alert("Welcome to my Calculator!");
+        // input numbers
+        firstNumber = prompt("Input the first number");
+        while (isNaN(firstNumber)) {
+          firstNumber = Number(prompt("Please input a valid first number:"));
+        }
+        secondNumber = prompt("Input the second number");
+        while (isNaN(secondNumber)) {
+          secondNumber = Number(prompt("Please input a valid second number:"));
+        }
+        // choose operator
+        operator = prompt(
+          "What do you want to do with these two numbers? \n 1. Add \n 2. Subtract \n 3. Multiply \n 4. Divide"
+        );
+        function calculator() {
+          // addition
+          if (operator == "1") {
+            var result = (parseInt(firstNumber) + parseInt(secondNumber));
+         alert(`${firstNumber} + ${secondNumber} = ${result}`);
+            // subtraction
+          } else if (operator == "2") {
+            var result = (parseInt(firstNumber) - parseInt(secondNumber));
+         alert(`${firstNumber} + ${secondNumber} = ${result}`);
+            // multiplication
+          } else if (operator == "3") {
+            var result = (parseInt(firstNumber) * parseInt(secondNumber));
+         alert(`${firstNumber} + ${secondNumber} = ${result}`);
+            // division
+          } else if (operator == "4") {
+           var result = (parseFloat(firstNumber) / parseFloat(secondNumber));
+         alert(`${firstNumber} / ${secondNumber} = ${result}`);
+          } else alert("Enter a valid input!");
+        }
+        calculator();
+
+
+        // calculate = function calculator() {
+        //     mathExpression = (prompt("Input Math Expression"));
+        // result = eval(mathExpression);
+        // alert(`${mathExpression} = ${result}`);
+        // }
+
+        // calculate();
+
+
+
+        // alert("Welcome to my Calculator!")
+        // // addition
+        // function add(num1, num2) {
+        //     value = num1 + num2
+        //     alert(`Result:\n${num1} + ${num2} = ${value}`)
+        // }
+        // // subtraction
+        // function sub(num1, num2) {
+        //     value = num1 - num2
+        //     alert(`Result:\n${num1} - ${num2} = ${value}`)
+        // }
+        // // multiplication
+        // function mul(num1, num2) {
+        //     value = num1 * num2
+        //     alert(`Result:\n${num1} * ${num2} = ${value}`)
+        // }
+        // // division
+        // function div(num1, num2) {
+        //     value = num1 / num2
+        //     alert(`Result:\n${num1} / ${num2} = ${value}`)
+        // }
+
+        // a = Number(prompt('Input the first number:'))
+
+        // while (isNaN(a)) {
+        //     a = Number(prompt('Please enter a Valid First Number:'))
+        // }
+
+        // b = Number(prompt('Input the second number:'))
+
+        // while (isNaN(b)) {
+        //     b = Number(prompt('Please input a valid second number:'))
+        // }
+
+        // operation = prompt(
+        //     "Select an Operation:\n1. Addition\n2. Subtraction\n3. Multiplication\n4. Division"
+        // )
+
+        // if (operation == 1) {
+        //     add(a, b)
+        // } else if (operation == 2) {
+        //     sub(a, b)
+        // } else if (operation == 3) {
+        //     mul(a, b)
+        // } else if (operation == 4) {
+        //     div(a, b)
+        // } else {
+        //     alert('Enter valid input')
+        // }
+      });
+    </script>
+  </body>
+</html>
