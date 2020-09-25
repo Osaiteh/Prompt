@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Sign Up</h1>
+        <div class="form">
+                <input type="text" id="username" placeholder="Username">
+                <input type="text" id="email" placeholder="Enter Email Address">
+                <input type="password" id="password" placeholder="Password">
+                <input type="password" id="confirmPassword" placeholder="Confirm Password">
+                <button class="addBtn">Sign Up</button>
+        </div>
+
+        <h1>Sign In</h1>
+        <div class="form">
+                <input type="text" id="loginUsername" placeholder="Username">
+                <input type="password" id="loginPassword" placeholder="Password">
+                <button class="login">Login</button>>
+        </div>
+    </main>
+
+    <script> 
+     users = JSON.parse(localStorage.getItem("internalUsers"))
+if (users == null) {
+    users = []
+}
+document.querySelector('.addBtn').addEventListener('click', () => {
+
+    password = document.getElementById('password').value
+    confirmPassword = document.getElementById('confirmPassword').value
+
+    if (password == confirmPassword) {
+        registeredUsers = {
+            "username": document.getElementById('username').value,
+            "email": document.getElementById('email').value,
+            "password": document.getElementById('password').value
+        }
+    }
+    else {
+        alert("Password Mismatch")
+    }
+
+    if (registeredUsers.users != "" && registeredUsers.email != "" && registeredUsers.password != "" && registeredUsers.confirmPassword != "") {
+        users.push(registeredUsers)
+    }
+    localStorage.setItem("internalUsers", JSON.stringify(users))
+    document.getElementById('confirmPassword').value = ""
+    document.getElementById('username').value = ""
+    document.getElementById('email').value = ""
+    document.getElementById('password').value = ""
+})
+document.querySelector('.login').addEventListener('click', () => {
+    ifUserExist = users.find(element => element.username == document.getElementById('loginUsername').value)
+
+    ifPasswordExist = users.find(element => element.password == document.getElementById('loginPassword').value)
+
+    if (ifPasswordExist == undefined || ifUserExist == undefined) {
+        alert("Record not found")
+    }
+})
+</script>
+</body>
+</html>
