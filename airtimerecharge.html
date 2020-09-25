@@ -14,7 +14,8 @@
 
     <script>
               var button = document.getElementById("btn");
-              button.addEventListener('click', function(){
+              button.addEventListener('click', airtimeRecharge)
+              function airtimeRecharge(){
                   var input = prompt("1. Airtime-self \n 2. Airtime-Others \n 3. Data \n 4. Transfer")
       switch(input){
         case "1":
@@ -199,7 +200,7 @@
       //         alert("Transaction has been cancelled.")
       //     } else alert("Invalid Input.")
       // } else alert("Your input is invalid!");
-              })
+              }
     </script>
   </body>
 </html>
