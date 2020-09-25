@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array</title>
+  </head>
+  <body>
+      <button onclick="createUser()">Add a new user</button>
+    <div id="users">
+
+    </div>
+    <script>
+      let internalUsers = [
+        {
+          fullName: "Jack Bauer",
+          eMail: "jackbauer@gmail.com",
+          phone: "+13430567212",
+          pics: "jack.svg",
+        },
+        {
+          fullName: "Celine Dion",
+          eMail: "celinedion@gmail.com",
+          phone: "+9354u685542",
+          pics: "celine.webp",
+        },
+        {
+          fullName: "Sharon OOja",
+          eMail: "sharonooja@gmail.com",
+          phone: "+499435424",
+          pics: "sharon.svg",
+        },
+        {
+          fullName: "Selena Gomez",
+          eMail: "selenagomez@gmail.com",
+          phone: "+111000212",
+          pics: "selena.svg",
+        },
+
+        {
+          fullName: "Simi Kosoko",
+          eMail: "simikosoko@gmail.com",
+          phone: "+940358223",
+          pics: "simi.svg",
+        },
+      ];
+
+    
+
+
+function displayUsers(){
+      usersDiv = "";
+      for(i=0; i<internalUsers.length; i++){
+      usersDiv +=
+          `<div class="usersCard">
+          <img src ="${internalUsers[i].pics}" style = "max-height: 50px"
+          <strong>Full Name</strong> : ${internalUsers[i].fullName}<br>
+          <strong>Email:</strong> ${internalUsers[i].eMail}<br>
+          <strong>Phone:</strong> ${internalUsers[i].phone}<br>
+          <button onClick = "editUser()">Edit</button>
+          <button onClick="deleteUser(${i})">Delete</button>
+          </div>`
+      }
+      document.getElementById("users").innerHTML = usersDiv;
+}
+
+function createUser() {
+       let internalUser = {
+          "fullName": prompt("Enter Full name"),
+          "eMail": prompt("Enter Email address"),
+          "phone": prompt("Enter Phone number"),
+          "pics": "selena.svg"
+        };
+
+        internalUsers.push(internalUser);
+        displayUsers();
+      }
+
+
+function editUser(id) {
+    let userEdit = {
+        "fullName": prompt("Enter Full name", internalUsers[id].fullName),
+          "eMail": prompt("Enter Email address", internalUsers[id].eMail),
+          "phone": prompt("Enter Phone number", internalUsers[id].phone),
+          "pics": "selena.svg"
+}
+}
+
+displayUsers();    
+      function deleteUser(id){
+          if(confirm(`Are you sure you want to delete ${internalUsers[id].fullName}?`))
+     internalUsers.splice(id,1)
+     displayUsers()
+    };
+    </script>
+  </body>
+</html>
