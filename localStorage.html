@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users Page</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <main>
+      <h1>People</h1>
+      <div class="form">
+          <input type="hidden" id="index" placeholder="Index" />
+          <input type="text" id="fullName" placeholder="Enter Full Name" />
+          <input type="text" id="email" placeholder="Enter Email Address" />
+          <input type="text" id="phone" placeholder="Enter Your Phone Number" />
+          <input type="file" id="pics" />
+          <button class="addButton" onclick="add()">Add User</button>
+          <button class="updateButton" onclick="update()">Update</button>
+      </div>
+
+      <h1>Users</h1>
+      <div id="container"></div>
+    </main>
+
+    <script>
+      users = JSON.parse(localStorage.getItem("users"));
+      if (users == null) {
+        users = [];
+      }
+
+      function add() {
+        People = {
+          fullName: document.getElementById("fullName").value,
+          email: document.getElementById("email").value,
+          phone: document.getElementById("phone").value,
+          pics: document.getElementById("pics").value.split("\\")[2],
+        };
+
+        if (
+          People.fullName != "" &&
+          People.email != "" &&
+          People.phone != "" &&
+          People.pics != ""
+        ) {
+          users.push(People);
+        }
+
+        localStorage.setItem("users", JSON.stringify(users));
+
+        display();
+      }
+
+      function display() {
+        cont = "";
+
+        for (i = 0; i < users.length; i++) {
+          cont += `
+            <div class="profile"> 
+            <div class="item">               
+            <img src= "${users[i].pics}" style= "max-height: 100px"><br>
+            </div>
+            <div class="item">
+            <strong>Full Name</strong> : ${users[i].fullName}<br>
+            </div>
+            <div class="item">
+            <strong>Email</strong> : ${users[i].email}<br>
+            </div>
+            <div class="item">
+            <strong>Phone</strong> : ${users[i].phone}<br>
+            </div>
+            <div class="item">
+            <button class = "DeleteButton" onclick="Delete(${i})">Delete</button>
+            <button class = "editButton" onclick="edit(${i})">Edit</button>
+            </div>
+         </div>`;
+        }
+        document.getElementById("container").innerHTML = cont;
+      }
+
+      display();
+
+      function Delete(id) {
+        con = confirm(`Are you sure you want to Delete ${users[id].fullName}?`);
+        if (con == true) {
+          users.splice(id, 1);
+
+          localStorage.setItem("users", JSON.stringify(users));
+        }
+        display();
+      }
+      function edit(id) {
+        editUser = users[id];
+        document.getElementById("fullName").value = editUser.fullName;
+        document.getElementById("email").value = editUser.email;
+        document.getElementById("phone").value = editUser.phone;
+        document.getElementById("pics").value.split("\\")[2] = editUser.pics;
+        document.getElementById("index").value = id;
+      }
+      function update() {
+        i = document.getElementById("index").value;
+
+        let edited = {
+          fullName: document.getElementById("fullName").value,
+          email: document.getElementById("email").value,
+          phone: document.getElementById("phone").value,
+          pics: document.getElementById("pics").value.split("\\")[2],
+        };
+        users[i] = edited;
+        localStorage.setItem("users", JSON.stringify(users));
+        display();
+      }
+      //         findName = internalUsers.find(userObject=>userObject.fullName=="mj");
+      // alert(JSON.stringify(findName));
+
+      // findNamePosition = internalUsers.findIndex(userObject=>userObject.fullName=="mj");
+      // alert((findNamePosition) + 1);
+      // // alert(internalUsers.keys);
+      // alert(Object.keys(internalUsersObject));
+    </script>
+  </body>
+</html>
