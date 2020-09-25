@@ -1,8 +1,15 @@
+:root{
+  --myGreen : #a3f7bf;
+  --myYellow : #fff591;
+  --myBlue : #05dfd7;
+  --myPink : #fa26a0;
+  --myWhite: #fff;
+}
 body {
   box-sizing: border-box;
   padding: 10px;
   margin: 0;
-  background-color: #a3f7bf;
+  background-color: var(--myGreen);
 }
 
 .main {
@@ -16,46 +23,46 @@ body {
 input {
   display: block;
   outline: none;
-  border: 2px solid #fff591;
+  border: 2px solid var(--myYellow);
   margin: 30px;
-  background: #05dfd7;
+  background: var(--myBlue);
   padding: 20px;
   font-size: 30px;
   transition: all 300ms ease;
-  color: #fa26a0;
+  color: var(--myPink);
 }
 
 input:hover,
 input:focus {
   background: transparent;
-  border: 2px solid #fa26a0;
+  border: 2px solid var(--myPink);
   transform: scale(1.1);
   transition: all 300ms ease;
   cursor: pointer;
 }
 
-button {
+.btn{
   display: block;
   outline: none;
-  border: 2px solid #fff591;
+  border: 2px solid var(--myYellow);
   margin: 30px;
-  background: #05dfd7;
+  background: var(--myBlue);
   height: 8rem;
   width: 16rem;
   font-size: 30px;
   transition: all 300ms ease;
-  color: #fa26a0;
+  color: var(--myPink);
 }
 
-button a {
+.btn a {
   text-decoration: none;
-  color: #fa26a0;
+  color: var(--myPink);
 }
 
-button:hover,
-button:focus {
+.btnn:hover,
+.btn:focus {
   background: transparent;
-  border: 2px solid #fa26a0;
+  border: 2px solid var(--myPink);
   transform: scale(1.1);
   transition: all 300ms ease;
   cursor: pointer;
@@ -63,25 +70,57 @@ button:focus {
 
 table {
   font-size: 18px;
-  background: #05dfd7;
-  border: 2px solid #fa26a0;
+  background: var(--myBlue);
+  border: 2px solid var(--myPink);
   border-collapse: collapse;
   padding: 15px;
 }
 
 tr:nth-child(even) {
-  background-color: #fff591;
+  background-color: var(--myYellow);
 }
 
 tr:hover {
-  background-color: #fff;
+  background-color: var(--myWhite);
 }
 
 th {
-  background-color: #fa26a0;
+  background-color: var(--myPink);
   color: white;
 }
 /* fff591 */
 /* a3f7bf */
 /* 05dfd7 */
 /* fa26a0 */
+
+/*********************** ARRAY  *************************/
+.usersCard{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s; 
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin-bottom: 50px;
+  overflow-wrap: wrap;
+  overflow: hidden;
+}
+.container{
+  padding: 2px 16px;
+}
+#users{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 30px;
+  background-color: var(--myPink);
+  flex-wrap: wrap;
+}
+
+#edit, #delete{
+  height: 30px;
+}
+.container{
+  display: flex;
+  flex-direction: row;
+}
