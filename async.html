@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        background:burlywood;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 50vh;
+    }
+
+    video {
+        width: 50vw;
+        height:auto;
+    }
+</style>
+<body>
+    <script>
+        playVideo('https://cdn.videvo.net/videvo_files/video/free/2019-02/small_watermarked/190111_09_BangkokPort_Drone_02_preview.webm')
+
+        async function playVideo(audioSource) {
+
+            // Create audio and source
+            let audio = document.createElement('video')
+            let source = document.createElement('source')
+
+            // Set attributes
+            audio.setAttribute('controls', 'controls')
+            audio.setAttribute('id', 'audio')
+
+            // Add src
+            source.src = audioSource
+            source.type = "audio/mpeg"
+            audio.appendChild(source)
+
+            audio.onload = await audio
+
+            document.body.append(audio)
+
+            var audios = document.getElementById('audio')
+            const play = await audios.play()
+        }
+    </script>
+</body>
+</html>
