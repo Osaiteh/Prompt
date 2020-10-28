@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        createVideo('https://www.youtube.com/watch?v=lta5go9P-go')
+
+        async function createVideo(audioSource) {
+
+            // Create audio and source
+            let audio = document.createElement('video')
+            let source = document.createElement('source')
+
+            // Set attributes
+            audio.setAttribute('controls', 'controls')
+            audio.setAttribute('id', 'audio')
+
+            // Add src
+            source.src = audioSource
+            source.type = "audio/mpeg"
+            audio.appendChild(source)
+
+            audio.onload = await audio
+
+            document.body.append(audio)
+
+            var audios = document.getElementById('audio')
+            const play = await audios.play()
+        }
+    </script>
+</body>
+</html>

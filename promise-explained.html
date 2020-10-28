@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .message-ball{
+            font-size: 25px;
+            line-height: 200px;
+            text-align: center;
+            font-weight: 900;
+        }
+        .circle{
+            transition-property: width, height, margin-left, margin-top;
+            transition-duration: 2s;
+            position: fixed;
+            transform: translateX(-50%) translateY(-50%);
+            background-color: rgb(42, 6, 247);
+            border-radius: 50%;
+        }
+    </style>
+    <button onclick="show()">Click me</button>
+    <script>
+        // Promise States: 1. Pending, 2. Fulfilled : Resolved, 3. Rejected : Failed.
+// let promise = new Promise(function(resolve,reject){
+// reject("OOPS! Page not found!")
+
+// })
+
+// let promise = new Promise((resolve,reject)=>{
+// reject("TiideLab")
+// })
+// promise.then(function(response){
+// alert(response)
+// })
+// .catch(function(error){
+//     alert(error)
+// })
+// //console.log(promise)
+
+// loadAudio("").then(
+//     play()
+// ).catch(function(err){
+//     alert(err.message())
+// })
+
+// function loadAudio(src){
+//     return new Promise(function(resolve,reject){
+//         let audio = document.createElement('audio')
+//         audio.setAttribute('controls', 'controls')
+//         audio.setAttribute('id', 'audio')
+//             let source = document.createElement('source')
+//             source.src = src
+//             source.type = "audio/mpeg"
+//         audio.appendChild()
+//         audio.onload = function(){
+//             resolve
+//         }
+//         document.body.append(audio)
+//     })
+// }
+// function play(){
+//     return new Promise(function(resolve,reject){
+//         var audio = document.getElementById("audio");
+//         resolve(audio.play())
+//     })
+// }
+function show(){
+    drawCircle(150, 150, 200).then
+    (div => {
+        div.classList.add('message-ball');
+        div.append("Tiide Lab...")
+    })
+}
+
+function drawCircle(x, y, z){
+    let div = document.createElement('div');
+    div.style.width = 0;
+    div.style.height = 0;
+    div.style.left = x + 'px';
+    div.style.top = y + 'px';
+    div.className = 'circle';
+    document.body.append(div);
+
+    return new Promise(resolve => {
+        setTimeout(() => {
+            div.style.width = z + 'px';
+            div.style.height = z + 'px';
+
+            div.addEventListener('transitionend', function handler(){
+                div.removeEventListener('transitionend', handler);
+                resolve(div);
+            });
+        }, 0);
+    })
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    Asynchronous JS and XML 
+    
+    Callback 
+    
+    Promise 
+    
+    Async wait
+
+    <script>
+      loadJS("https://unpkg.com/sweetalert/dist/sweetalert.min.js")
+
+      console.log("TIIDELab");
+      setTimeout(() => {
+        console.log("Developing the new leaders of tomorrow");
+      }, 0);
+
+      console.log("With you, there is hope in Nigeria");
+
+      //    Callback Example
+      function loadJS(source, callback) {
+        let script = document.createElement("script");
+        script.src = source;
+
+        script.onload = function () {
+          return script;
+        };
+
+        script.onerror = function () {
+          return new Error("Script cannot be loaded");
+        };
+      }
+      document.head.appendChild(script);
+    </script>
+
+    <script src="" async defer></script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body id="cont">
+    <p id="pCont">
+
+    </p>
+    <button onclick="LoadUsers()" id ="loadUser"></button>
+    <script>
+        ele = document.createElement("div");
+        ele.innerHTML = "TIIDELab Fellows are JS Pros";
+        ele.append("TIIDELab Fellows are Pros");
+        document.getElementById("pCont").appendChild(ele);
+
+        function LoadUsers(){
+            document.getElementById("loadUser").innerHTML = `<img src>`
+            setTimeout(()=>{
+                document.getElementById("loadUser").innerHTML = ` Load Users`
+            }, 10000);
+        }
+    </script>
+</body>
+</html>
